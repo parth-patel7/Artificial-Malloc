@@ -1,0 +1,15 @@
+CS214 Systems Programming Assignment 1: ++Malloc
+
+Authors - Dev Patel (drp145) and Parth Patel (ptp26)
+
+-->What is the purpose of the assignment?
+	
+	-To implement our own version of the system's malloc and free that provides the same basic functionality and also detects common programming and usage errors.
+
+--> Description about Test-case E (Number 5) from memgrind.c :
+ 
+	-As we know about the metadata, that for each block, we need 2 bytes of metadata, So we randomly do 5000 mallocs and free. When the memory threshold has not been reached, and if malloc gives us an NULL, then it is an error. We also keep on freeing the block at random, which we allocated, using the pointers kept with us. Thus, with this case we can check about multiple allocations and freeing happening one after the other. This case was made to check the capability of code to handle multiple tasks within given amount of memory excluding the size of meta data block and magic number block. This test-case has been commented thoroughly to help the reader walk through what's going on.
+
+--> Description about Test-case F (Number 6) from memgrind.c :
+
+	-We Divided the complete memory picture into 4 blocks of maximum size and then checking if they can be allocated successfully. The blocks are of max memory, excluding the metadata info. We then free one block, and try to split that one block into another 2 blocks of equal memory, after excluding the extra metadata block for one more block formed by splitting. In this test-case we can see how the metadata block works along with the original allocated or freed block of memory. The more the main block of 4096 bytes is divided the more the metadata block of 2 bytes each will be needed to keep track of the processes happening in the run. This is case is the perfect example for that type of task handling. This test-case has been commented thoroughly to help the reader walk through what's going on.
